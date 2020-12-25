@@ -1,21 +1,14 @@
 const express = require('express');
+const operationsController = require('./controller');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('rad');
-});
+router.get('/', operationsController.operationsFindAll);
 
-router.post('/', (req, res) => {
-  res.send('rad');
-});
+router.post('/', operationsController.operationsCreate);
 
-router.put('/:id', (req, res) => {
-  res.send('rad');
-});
+router.put('/:id', operationsController.operationsUpdate);
 
-router.delete('/:id', (req, res) => {
-  res.send('rad');
-});
+router.delete('/:id', operationsController.operationsDelete);
 
 module.exports = router;
