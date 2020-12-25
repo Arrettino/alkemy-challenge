@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=backend:server node ./bin/www",
+    "start": "DEBUG=backend:server NODE_ENV=production node ./bin/www",
     "start:dev": "nodemon -L --config nodemon.json ./bin/www "
   },
   "dependencies": {
