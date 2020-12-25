@@ -3,8 +3,6 @@ const operationsRoutes = require('../components/operations/api/routes');
 
 const router = express.Router();
 
-router.use('/operations', (req, res, next) => {
-  res.send('rad');
-});
+router.use('/operations', operationsRoutes);
 
 module.exports = router;
