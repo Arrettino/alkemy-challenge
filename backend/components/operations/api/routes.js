@@ -3,12 +3,12 @@ const operationsController = require('./controller');
 
 const router = express.Router();
 
-router.get('/', operationsController.operationsFindAll);
+router.get('/', operationsController.findAllOperations);
 
-router.post('/', operationsController.operationsCreate);
+router.post('/', operationsController.createOperations);
 
-router.put('/:id', operationsController.operationsUpdate);
+router.put('/:id', operationsController.updateOperations);
 
-router.delete('/:id', operationsController.operationsDelete);
+router.delete('/:id', operationsController.deleteOperations);
 
 module.exports = router;

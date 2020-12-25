@@ -1,14 +1,14 @@
 module.exports = {
-  operationsFindAll() {
+  findAllOperations() {
     return ('rad');
   },
-  operationsCreate() {
+  createOperations() {
     return ('rad');
   },
-  operationsUpdate() {
+  updateOperations() {
     return ('rad');
   },
-  operationsDelete() {
+  deleteOperations() {
     return ('rad');
   },
 };

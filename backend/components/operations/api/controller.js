@@ -1,19 +1,19 @@
 const operationsServices = require('../services');
 
 module.exports = {
-  operationsFindAll(req, res) {
+  findAllOperations(req, res) {
     operationsServices.operationsFindAll();
     res.send('rad');
   },
-  operationsCreate(req, res) {
+  createOperations(req, res) {
     operationsServices.operationsCreate();
     res.send('rad');
   },
-  operationsUpdate(req, res) {
+  updateOperations(req, res) {
     operationsServices.operationsUpdate();
     res.send('rad');
   },
-  operationsDelete(req, res) {
+  deleteOperations(req, res) {
     operationsServices.operationsDelete();
     res.send('rad');
   },
