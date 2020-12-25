@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.use('/', (req, res, next) => {
+router.use('/operations', (req, res, next) => {
   res.send('rad');
 });
 
