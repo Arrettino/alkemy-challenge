@@ -3,9 +3,10 @@
 
 const http = require('http');
 const debug = require('debug')('backend:server');
+const config = require('config');
 const app = require('../app');
 
-const port = process.env.PORT || 5000;
+const port = config.get('server.port');
 app.set('port', port);
 
 const server = http.createServer(app);
