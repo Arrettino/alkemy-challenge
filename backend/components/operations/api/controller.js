@@ -6,6 +6,9 @@ module.exports = {
     res.send('rad');
   },
   createOperations(req, res) {
+    const {
+      concept, amount, date, type,
+    } = req.body;
     operationsServices.createOperations();
     res.send('rad');
   },
