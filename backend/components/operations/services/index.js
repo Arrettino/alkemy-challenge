@@ -2,20 +2,36 @@ const { operations } = require('../api/validationSchemas');
 const operationsRepo = require('../dataAccess');
 
 module.exports = {
-  findAllOperations() {
-    operationsRepo.findAllOperations();
-    return ('rad');
+  async findAllOperations() {
+    try {
+      operationsRepo.findAllOperations();
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
-  createOperations(concept, amount, date, type) {
-    operationsRepo.createOperations(concept, amount, date, type);
-    return ('rad');
+  async createOperations(concept, amount, date, type) {
+    try {
+      operationsRepo.createOperations(concept, amount, date, type);
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
-  updateOperations(id, concept, amount, date, type) {
-    operationsRepo.updateOperations(id, concept, amount, date, type);
-    return ('rad');
+  async updateOperations(id, concept, amount, date, type) {
+    try {
+      operationsRepo.updateOperations(id, concept, amount, date, type);
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
-  deleteOperations(id) {
-    operationsRepo.deleteOperations(id);
-    return ('rad');
+  async deleteOperations(id) {
+    try {
+      operationsRepo.deleteOperations(id);
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
 };
