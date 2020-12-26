@@ -1,27 +1,47 @@
 const operationsServices = require('../services');
 
 module.exports = {
-  findAllOperations(req, res) {
-    operationsServices.findAllOperations();
-    res.send('rad');
+  async findAllOperations(req, res) {
+    try {
+      await operationsServices.findAllOperations();
+      res.send('rad');
+    } catch (err) {
+      res.send(err);
+    }
   },
-  createOperations(req, res) {
-    const {
-      concept, amount, date, type,
-    } = req.body;
-    operationsServices.createOperations(concept, amount, date, type);
-    res.send('rad');
+
+  async createOperations(req, res) {
+    try {
+      const {
+        concept, amount, date, type,
+      } = req.body;
+      await operationsServices.createOperations(concept, amount, date, type);
+      res.send('rad');
+    } catch (err) {
+      res.send(err);
+    }
   },
-  updateOperations(req, res) {
-    const { id } = req.params;
-    const {
-      concept, amount, date, type,
-    } = req.body;
-    operationsServices.updateOperations(id, concept, amount, date, type);
-    res.send('rad');
+
+  async updateOperations(req, res) {
+    try {
+      const { id } = req.params;
+      const {
+        concept, amount, date, type,
+      } = req.body;
+      await operationsServices.updateOperations(id, concept, amount, date, type);
+      res.send('rad');
+    } catch (err) {
+      res.send(err);
+    }
   },
-  deleteOperations(req, res) {
-    operationsServices.deleteOperations();
-    res.send('rad');
+
+  async deleteOperations(req, res) {
+    try {
+      const { id } = req.params;
+      await operationsServices.deleteOperations(id);
+      res.send('rad');
+    } catch (err) {
+      res.send(err);
+    }
   },
 };
