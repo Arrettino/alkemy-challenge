@@ -1,16 +1,32 @@
 const OperationsModel = require('./OperationsModel');
 
 module.exports = {
-  findAllOperations() {
-    return ('rad');
+  async findAllOperations() {
+    try {
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
-  createOperations() {
-    return ('rad');
+  async createOperations() {
+    try {
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
-  updateOperations() {
-    return ('rad');
+  async updateOperations() {
+    try {
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
-  deleteOperations() {
-    return ('rad');
+  async deleteOperations() {
+    try {
+      return ('rad');
+    } catch (err) {
+      return (err);
+    }
   },
 };
