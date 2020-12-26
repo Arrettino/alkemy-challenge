@@ -10,6 +10,16 @@ module.exports = {
     }
   },
 
+  async findOperations(req, res) {
+    try {
+      const { id } = req.params;
+      const response = await operationsServices.findOperations(id);
+      res.send(response);
+    } catch (err) {
+      res.send(err);
+    }
+  },
+
   async createOperations(req, res) {
     try {
       const {

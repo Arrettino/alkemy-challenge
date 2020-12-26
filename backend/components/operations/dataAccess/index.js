@@ -9,6 +9,14 @@ module.exports = {
       return (err);
     }
   },
+  async findOperations(id) {
+    try {
+      const response = await OperationsModel.findByPk(id);
+      return (response);
+    } catch (err) {
+      return (err);
+    }
+  },
   async createOperations(concept, amount, date, type) {
     try {
       await OperationsModel.create({
@@ -33,11 +41,7 @@ module.exports = {
   },
   async deleteOperations(id) {
     try {
-      await OperationsModel.destroy({
-        where: {
-          id,
-        },
-      });
+      await OperationsModel.destroy({ where: { id } });
       return ({ message: 'Operation deleted succesfully' });
     } catch (err) {
       return (err);

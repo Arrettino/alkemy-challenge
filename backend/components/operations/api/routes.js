@@ -7,6 +7,10 @@ const router = express.Router();
 
 router.get('/', operationsController.findAllOperations);
 
+router.get('/:id',
+  validationMiddleware(validationSchema.operationsId, 'params'),
+  operationsController.findOperations);
+
 router.post('/',
   validationMiddleware(validationSchema.operations, 'body'),
   operationsController.createOperations);

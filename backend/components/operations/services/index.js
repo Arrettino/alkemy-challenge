@@ -9,6 +9,14 @@ module.exports = {
       return (err);
     }
   },
+  async findOperations(id) {
+    try {
+      const response = await operationsRepo.findOperations(id);
+      return (response);
+    } catch (err) {
+      return (err);
+    }
+  },
   async createOperations(concept, amount, date, type) {
     try {
       const response = await operationsRepo.createOperations(concept, amount, date, type);
