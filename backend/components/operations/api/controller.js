@@ -9,7 +9,7 @@ module.exports = {
     const {
       concept, amount, date, type,
     } = req.body;
-    operationsServices.createOperations();
+    operationsServices.createOperations(concept, amount, date, type);
     res.send('rad');
   },
   updateOperations(req, res) {
