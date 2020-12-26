@@ -9,7 +9,7 @@ router.get('/', operationsController.findAllOperations);
 
 router.post('/', validationMiddleware(schema.operations, 'body'), operationsController.createOperations);
 
-router.put('/:id', validationMiddleware(schema.operationsId, 'params'), operationsController.updateOperations);
+router.put('/:id', validationMiddleware(schema.operationsId, 'params'), validationMiddleware(schema.operations, 'body'), operationsController.updateOperations);
 
 router.delete('/:id', validationMiddleware(schema.operationsId, 'params'), operationsController.deleteOperations);
 
