@@ -4,7 +4,7 @@ module.exports = {
   findAllOperations() {
     return ('rad');
   },
-  createOperations() {
+  createOperations(concept, amount, date, type) {
     return ('rad');
   },
   updateOperations() {
