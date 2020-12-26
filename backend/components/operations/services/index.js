@@ -1,4 +1,3 @@
-const { operations } = require('../api/validationSchemas');
 const operationsRepo = require('../dataAccess');
 
 module.exports = {
