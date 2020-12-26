@@ -13,7 +13,11 @@ module.exports = {
     res.send('rad');
   },
   updateOperations(req, res) {
-    operationsServices.updateOperations();
+    const { id } = req.params;
+    const {
+      concept, amount, date, type,
+    } = req.body;
+    operationsServices.updateOperations(id, concept, amount, date, type);
     res.send('rad');
   },
   deleteOperations(req, res) {
