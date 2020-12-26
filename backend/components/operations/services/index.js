@@ -3,7 +3,7 @@ const operationsRepo = require('../dataAccess');
 module.exports = {
   async findAllOperations() {
     try {
-      operationsRepo.findAllOperations();
+      await operationsRepo.findAllOperations();
       return ('rad');
     } catch (err) {
       return (err);
@@ -11,7 +11,7 @@ module.exports = {
   },
   async createOperations(concept, amount, date, type) {
     try {
-      operationsRepo.createOperations(concept, amount, date, type);
+      await operationsRepo.createOperations(concept, amount, date, type);
       return ('rad');
     } catch (err) {
       return (err);
@@ -19,7 +19,7 @@ module.exports = {
   },
   async updateOperations(id, concept, amount, date, type) {
     try {
-      operationsRepo.updateOperations(id, concept, amount, date, type);
+      await operationsRepo.updateOperations(id, concept, amount, date, type);
       return ('rad');
     } catch (err) {
       return (err);
@@ -27,7 +27,7 @@ module.exports = {
   },
   async deleteOperations(id) {
     try {
-      operationsRepo.deleteOperations(id);
+      await operationsRepo.deleteOperations(id);
       return ('rad');
     } catch (err) {
       return (err);
