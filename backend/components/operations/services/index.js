@@ -7,10 +7,10 @@ module.exports = {
   createOperations(concept, amount, date, type) {
     return ('rad');
   },
-  updateOperations() {
+  updateOperations(id, concept, amount, date, type) {
     return ('rad');
   },
-  deleteOperations() {
+  deleteOperations(id) {
     return ('rad');
   },
 };
