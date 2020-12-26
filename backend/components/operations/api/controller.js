@@ -3,8 +3,8 @@ const operationsServices = require('../services');
 module.exports = {
   async findAllOperations(req, res) {
     try {
-      await operationsServices.findAllOperations();
-      res.send('rad');
+      const response = await operationsServices.findAllOperations();
+      res.send(response);
     } catch (err) {
       res.send(err);
     }
@@ -15,8 +15,8 @@ module.exports = {
       const {
         concept, amount, date, type,
       } = req.body;
-      await operationsServices.createOperations(concept, amount, date, type);
-      res.send('rad');
+      const response = await operationsServices.createOperations(concept, amount, date, type);
+      res.send(response);
     } catch (err) {
       res.send(err);
     }
@@ -28,8 +28,8 @@ module.exports = {
       const {
         concept, amount, date, type,
       } = req.body;
-      await operationsServices.updateOperations(id, concept, amount, date, type);
-      res.send('rad');
+      const response = await operationsServices.updateOperations(id, concept, amount, date, type);
+      res.send(response);
     } catch (err) {
       res.send(err);
     }
@@ -38,8 +38,8 @@ module.exports = {
   async deleteOperations(req, res) {
     try {
       const { id } = req.params;
-      await operationsServices.deleteOperations(id);
-      res.send('rad');
+      const response = await operationsServices.deleteOperations(id);
+      res.send(response);
     } catch (err) {
       res.send(err);
     }
