@@ -8,21 +8,21 @@ module.exports = {
       return (err);
     }
   },
-  async createOperations() {
+  async createOperations(concept, amount, date, type) {
     try {
       return ('rad');
     } catch (err) {
       return (err);
     }
   },
-  async updateOperations() {
+  async updateOperations(id, concept, amount, date, type) {
     try {
       return ('rad');
     } catch (err) {
       return (err);
     }
   },
-  async deleteOperations() {
+  async deleteOperations(id) {
     try {
       return ('rad');
     } catch (err) {
