@@ -1,14 +1,16 @@
 const express = require('express');
 const operationsController = require('./controller');
+const validationMiddleware = require('../../../middleware/validationMiddleware');
+const schema = require('./schemas');
 
 const router = express.Router();
 
 router.get('/', operationsController.findAllOperations);
 
-router.post('/', operationsController.createOperations);
+router.post('/', validationMiddleware(schema.operations, 'body'), operationsController.createOperations);
 
-router.put('/:id', operationsController.updateOperations);
+router.put('/:id', validationMiddleware(schema.operationsId, 'params'), operationsController.updateOperations);
 
-router.delete('/:id', operationsController.deleteOperations);
+router.delete('/:id', validationMiddleware(schema.operationsId, 'params'), operationsController.deleteOperations);
 
 module.exports = router;
