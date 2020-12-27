@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from '../container/home';
-import Operations from '../container/operations';
-import NotFound from '../container/notFound';
+import Home from '../pages/Home';
+import Operations from '../pages/Operations';
+import NotFound from '../pages/NotFound';
 
 function RouterConfig() {
   return (
