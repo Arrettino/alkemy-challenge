@@ -15,6 +15,7 @@ function OperationsUpdate() {
           date={operation.date}
           type={operation.type}
           handleData={handleData}
+          update
         />
       </div>
     </>
