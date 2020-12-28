@@ -5,7 +5,7 @@ import './operations.css';
 function Operations() {
   const [operations] = useState([]);
   return (
-    <div className='operations_container'>
+    <div className='mt-5'>
       <OperationTable operations={operations} />
     </div>
   );
