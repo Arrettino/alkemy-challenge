@@ -15,7 +15,7 @@ function OperationsTableRow({ id, concept, amount, date, type, actions, handleDe
       {actions ?
         (
           <td>
-            <Link to='/operations/update'>
+            <Link to={`/operations/update/${id}`}>
               <img src={edit} alt='edit' className='mr-3 table-cursor-pointer' width='20' />
             </Link>
             <img src={remove} alt='edit' onClick={() => handleDelete(id)} className='ml-3 table-cursor-pointer' width='20' />
