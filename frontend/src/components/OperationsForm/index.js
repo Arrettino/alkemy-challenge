@@ -4,7 +4,10 @@ import { useForm } from 'react-hook-form';
 
 function OperationsForm({ concept, amount, date, type, handleData, update }) {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => handleData(data);
+  const onSubmit = (data) => {
+    const operation = { ...data, amount: parseInt(data.amount, 10) };
+    handleData(operation);
+  };
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
