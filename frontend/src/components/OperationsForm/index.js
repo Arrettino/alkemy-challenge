@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-function OperationsForm({ concept, amount, date, type, handleData }) {
+function OperationsForm({ concept, amount, date, type, handleData, update }) {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => handleData(data);
   return (
@@ -28,7 +29,12 @@ function OperationsForm({ concept, amount, date, type, handleData }) {
             </select>
           </div>
         </div>
-        <button type='submit' className='btn btn-primary float-right'>Sign in</button>
+        {update ?
+          <button type='submit' className='btn btn-success float-right'>Guardar</button> :
+          <button type='submit' className='btn btn-success float-right'>Crear</button> }
+        <Link to='/operations'>
+          <button type='submit' className='btn btn-primary'>Volver</button>
+        </Link>
       </form>
     </>
   );
