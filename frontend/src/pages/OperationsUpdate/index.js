@@ -16,9 +16,18 @@ function OperationsUpdate() {
   useEffect(() => {
     findOperation();
   }, []);
+  const updateOperation = async (operation) => {
+    await fetch(`${baseUrl}/operations/${Id}`, {
+      method: 'PUT',
+      body: JSON.stringify(operation),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+  };
 
-  const handleData = (data) => {
-    console.log(data);
+  const handleData = (operation) => {
+    updateOperation(operation);
   };
   return (
     <>
