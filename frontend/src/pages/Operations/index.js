@@ -6,7 +6,6 @@ function Operations() {
   const [operations] = useState([]);
   return (
     <div className='operations_container'>
-      <p>Operations</p>
       <OperationTable operations={operations} />
     </div>
   );
