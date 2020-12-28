@@ -6,8 +6,7 @@ function ListOperations({ operations }) {
     <table className='table table-striped'>
       <thead className='thead-dark'>
         <tr>
-
-          <th scope='col'>Id</th>
+          <th scope='col'>ID</th>
           <th scope='col'>Concepto</th>
           <th scope='col'>Monto</th>
           <th scope='col'>Fecha</th>
