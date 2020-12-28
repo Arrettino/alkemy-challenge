@@ -2,7 +2,7 @@ import React from 'react';
 import edit from '../../assets/pics/edit.svg';
 import remove from '../../assets/pics/delete.svg';
 
-function Operation({ id, concept, amount, date, type }) {
+function OperationsTableRow ({ id, concept, amount, date, type }) {
   return (
     <tr>
       <th scope='row'>{id}</th>
@@ -18,4 +18,4 @@ function Operation({ id, concept, amount, date, type }) {
   );
 }
 
-export default Operation;
+export default OperationsTableRow;
