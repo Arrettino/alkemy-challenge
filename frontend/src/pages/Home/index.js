@@ -6,7 +6,6 @@ function Home() {
   const [operations] = useState([]);
   return (
     <div className='home_container'>
-      <p>Home</p>
       <div style={{ width: '300px' }}>
         <div className='card text-white bg-success text-center shadow'>
           <div className='card-body'>
