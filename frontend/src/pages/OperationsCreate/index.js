@@ -1,9 +1,22 @@
 import React from 'react';
 import OperationsForm from '../../components/OperationsForm';
+import Config from '../../config';
 
 function OperationsCreate() {
-  const handleData = (data) => {
-    console.log(data);
+
+  const createOperation = async (operation) => {
+    await fetch(`${Config.baseUrl}/operations`, {
+      method: 'POST',
+      body: JSON.stringify(operation),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+  };
+
+  const handleData = (operation) => {
+    console.log(operation);
+    createOperation(operation);
   };
   return (
     <>
