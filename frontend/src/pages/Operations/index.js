@@ -5,6 +5,10 @@ import './operations.css';
 
 function Operations() {
   const [operations] = useState([]);
+
+  const handleDelete = (id) => {
+    console.log(id);
+  };
   return (
     <div className='mt-5'>
       <Link to='/operations/create'>
@@ -12,7 +16,7 @@ function Operations() {
           Crear
         </button>
       </Link>
-      <OperationTable operations={operations} actions />
+      <OperationTable operations={operations} actions handleDelete={handleDelete} />
     </div>
   );
 }
