@@ -1,7 +1,7 @@
 import React from 'react';
 import TableRow from '../OperationsTableRow';
 
-function ListOperations({ operations }) {
+function OperationTable({ operations }) {
   return (
     <div className='table-responsive'>
       <table className='table table-striped'>
@@ -25,4 +25,4 @@ function ListOperations({ operations }) {
   );
 }
 
-export default ListOperations;
+export default OperationTable;
