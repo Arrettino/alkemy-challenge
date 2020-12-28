@@ -1,9 +1,9 @@
 import React from 'react';
 import edit from '../../assets/pics/edit.svg';
 import remove from '../../assets/pics/delete.svg';
-import './operationsTableRow.css'
+import './operationsTableRow.css';
 
-function OperationsTableRow ({ id, concept, amount, date, type }) {
+function OperationsTableRow({ id, concept, amount, date, type }) {
   return (
     <tr>
       <th scope='row'>{id}</th>
