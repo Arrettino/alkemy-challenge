@@ -1,7 +1,7 @@
 import React from 'react';
 import TableRow from '../OperationsTableRow';
 
-function OperationTable({ operations, actions }) {
+function OperationTable({ operations, actions, handleDelete }) {
   return (
     <div className='table-responsive'>
       <table className='table table-striped'>
@@ -24,7 +24,16 @@ function OperationTable({ operations, actions }) {
         </thead>
         <tbody>
           {operations.map(({ id, concept, amount, date, type }) => (
-            <TableRow id={id} concept={concept} amount={amount} date={date} type={type} actions={actions} />
+            <TableRow
+              id={id}
+              concept={concept}
+              amount={amount}
+              date={date}
+              type={type}
+              key={id}
+              actions={actions}
+              handleDelete={handleDelete}
+            />
           ))}
         </tbody>
       </table>
