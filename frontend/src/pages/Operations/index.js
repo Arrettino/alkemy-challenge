@@ -9,7 +9,7 @@ function Operations() {
       <button type='button' className='btn btn-success float-right mb-3 mr-3'>
         Crear
       </button>
-      <OperationTable operations={operations} />
+      <OperationTable operations={operations} actions />
     </div>
   );
 }
