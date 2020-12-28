@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import OperationsList from '../../components/OperationsTable';
 import './home.css';
 
 function Home() {
+  const [operations] = useState([]);
   return (
     <div className='home_container'>
       <p>Home</p>
@@ -13,6 +15,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <OperationsList operations={operations} />
     </div>
   );
 }
