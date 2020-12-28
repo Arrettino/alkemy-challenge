@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OperationTable from '../../components/OperationsTable';
-import Config from '../../config';
+import { baseUrl } from '../../config';
 import './operations.css';
 
 function Operations() {
   const [operations, setOperations] = useState([]);
 
   const getOperations = async () => {
-    const response = await fetch(`${Config.baseUrl}/operations`);
+    const response = await fetch(`${baseUrl}/operations`);
     const data = await response.json();
     setOperations(data);
   };
