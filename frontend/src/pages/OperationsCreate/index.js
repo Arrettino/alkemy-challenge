@@ -1,7 +1,7 @@
 import React from 'react';
 import OperationsForm from '../../components/OperationsForm';
 
-function Operations() {
+function OperationsCreate() {
   const handleData = (data) => {
     console.log(data);
   };
@@ -14,4 +14,4 @@ function Operations() {
   );
 }
 
-export default Operations;
+export default OperationsCreate;
