@@ -5,5 +5,6 @@ dotenv.config();
 module.exports = {
   server: {
     port: 5000,
+    nodeEnv: 'development',
   },
 };
