@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { baseUrl } from '../../config';
 import OperationsForm from '../../components/OperationsForm';
 
 function OperationsUpdate() {
-  const [operation] = useState({});
+  const [operation, setOperation] = useState({});
+  const { Id } = useParams();
+
+  const findOperation = async () => {
+    const response = await fetch(`${baseUrl}/operations/${Id}`);
+    const operation = await response.json();
+    setOperation(operation);
+  };
+
+  useEffect(() => {
+    findOperation();
+  }, []);
+
   const handleData = (data) => {
     console.log(data);
   };
