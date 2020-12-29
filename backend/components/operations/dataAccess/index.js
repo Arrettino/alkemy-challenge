@@ -3,12 +3,8 @@ const TotalBalanceModel = require('./TotalBalanceModel');
 
 module.exports = {
   async findAllOperations() {
-    try {
-      const response = await OperationsModel.findAll({});
-      return (response);
-    } catch (err) {
-      return (err);
-    }
+    const response = await OperationsModel.findAll({});
+    return (response);
   },
   async findOperations(id) {
     const response = await OperationsModel.findByPk(id);

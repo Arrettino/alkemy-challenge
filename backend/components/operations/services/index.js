@@ -5,16 +5,15 @@ const userId = 1;
 
 module.exports = {
   async findAllOperations(id) {
-    try {
-      if (id) {
-        const response = await operationsRepo.findOperations(id);
-        return (response);
-      }
+    if (!id) {
       const response = await operationsRepo.findAllOperations();
-      return (response);
-    } catch (err) {
-      return (err);
+      return ({ status: 200, json: response });
     }
+    const response = await operationsRepo.findOperations(id);
+    if (response) {
+      return ({ status: 200, json: response });
+    }
+    return ({ status: 404 });
   },
   async createOperations(concept, amount, date, type) {
     try {

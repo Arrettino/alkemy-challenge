@@ -5,9 +5,9 @@ module.exports = {
     try {
       const { id } = req.query;
       const response = await operationsServices.findAllOperations(id);
-      res.send(response);
+      res.status(response.status).json(response.json);
     } catch (err) {
-      res.send(err);
+      res.status(500).end();
     }
   },
 
