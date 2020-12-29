@@ -1,7 +1,7 @@
 const sequelize = require('./index');
 const operationsDataAccess = require('../components/operations/dataAccess');
 
-async function initDataBase() {
+async function initDatabase() {
   try {
     await sequelize.sync();
     const response = await operationsDataAccess.findTotalBalance(1);
@@ -14,4 +14,4 @@ async function initDataBase() {
   }
 }
 
-module.exports = initDataBase;
+module.exports = initDatabase;
