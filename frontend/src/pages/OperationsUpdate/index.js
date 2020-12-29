@@ -19,7 +19,7 @@ function OperationsUpdate() {
     findOperation();
   }, []);
   const updateOperation = async (operation) => {
-    await fetch(`${baseUrl}/operations/${Id}`, {
+    await fetch(`${baseUrl}/operations/${id}`, {
       method: 'PUT',
       body: JSON.stringify(operation),
       headers: {
