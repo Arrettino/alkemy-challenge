@@ -1,10 +1,10 @@
 const operationsServices = require('../services');
 
 module.exports = {
-  async findAllOperations(req, res) {
+  async findOperations(req, res) {
     try {
       const { id } = req.query;
-      const response = await operationsServices.findAllOperations(id);
+      const response = await operationsServices.findOperations(id);
       res.status(response.status).json(response.json);
     } catch (err) {
       res.status(500).end();

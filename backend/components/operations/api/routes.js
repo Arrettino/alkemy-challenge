@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/',
   validationMiddleware(validationSchema.operationsId, 'query'),
-  operationsController.findAllOperations);
+  operationsController.findOperations);
 
 router.get('/totalbalance', operationsController.totalBalance);
 

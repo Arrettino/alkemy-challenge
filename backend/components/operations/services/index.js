@@ -4,7 +4,7 @@ const signAmount = require('../utils/signAmount');
 const userId = 1;
 
 module.exports = {
-  async findAllOperations(id) {
+  async findOperations(id) {
     if (!id) {
       const response = await operationsRepo.findAllOperations();
       return ({ status: 200, json: response });
