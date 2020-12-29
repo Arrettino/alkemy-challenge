@@ -30,9 +30,9 @@ module.exports = {
         concept, amount, date, type,
       } = req.body;
       const response = await operationsServices.updateOperations(id, concept, amount, date, type);
-      res.send(response);
+      res.status(response.status).send({ message: response.message });
     } catch (err) {
-      res.send(err);
+      res.status(500).end();
     }
   },
 

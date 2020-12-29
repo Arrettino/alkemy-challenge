@@ -21,16 +21,11 @@ module.exports = {
     }
   },
   async updateOperations(id, concept, amount, date, type) {
-    try {
-      await OperationsModel.update({
-        concept, amount, date, type,
-      }, {
-        where: { id },
-      });
-      return ({ message: 'Operation updated succesfully' });
-    } catch (err) {
-      return (err);
-    }
+    await OperationsModel.update({
+      concept, amount, date, type,
+    }, {
+      where: { id },
+    });
   },
   async deleteOperations(id) {
     await OperationsModel.destroy({ where: { id } });
@@ -40,15 +35,11 @@ module.exports = {
     return (response);
   },
   async updateTotalBalance(userId, amount) {
-    try {
-      const response = await TotalBalanceModel.update(
-        { amount, userId },
-        { where: { userId } },
-      );
-      return (response);
-    } catch (err) {
-      return (err);
-    }
+    const response = await TotalBalanceModel.update(
+      { amount, userId },
+      { where: { userId } },
+    );
+    return (response);
   },
   async createTotalBalance(userId) {
     try {
