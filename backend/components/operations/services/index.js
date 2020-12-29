@@ -1,17 +1,11 @@
 const operationsRepo = require('../dataAccess');
 
+const userId = 1;
+
 module.exports = {
   async findAllOperations() {
     try {
       const response = await operationsRepo.findAllOperations();
-      return (response);
-    } catch (err) {
-      return (err);
-    }
-  },
-  async findOperations(id) {
-    try {
-      const response = await operationsRepo.findOperations(id);
       return (response);
     } catch (err) {
       return (err);
@@ -36,6 +30,14 @@ module.exports = {
   async deleteOperations(id) {
     try {
       const response = await operationsRepo.deleteOperations(id);
+      return (response);
+    } catch (err) {
+      return (err);
+    }
+  },
+  async findTotalBalance() {
+    try {
+      const response = await operationsRepo.findTotalBalance(userId);
       return (response);
     } catch (err) {
       return (err);

@@ -5,11 +5,11 @@ const validationSchema = require('./validationSchemas');
 
 const router = express.Router();
 
-router.get('/', operationsController.findAllOperations);
+router.get('/',
+  validationMiddleware(validationSchema.operationsId, 'query'),
+  operationsController.findAllOperations);
 
-router.get('/:id',
-  validationMiddleware(validationSchema.operationsId, 'params'),
-  operationsController.findOperations);
+router.get('/totalbalance', operationsController.totalBalance);
 
 router.post('/',
   validationMiddleware(validationSchema.operations, 'body'),
