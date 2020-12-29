@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+//components
+import Loading from '../../components/Loading';
 import OperationTable from '../../components/OperationsTable';
 import Error from '../../components/Error';
+//config
 import { baseUrl } from '../../config';
+//assets
 import './operations.css';
 
 function Operations() {
   const [operations, setOperations] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const getOperations = async () => {
@@ -15,7 +20,9 @@ function Operations() {
       const response = await fetch(`${baseUrl}/operations`);
       const data = await response.json();
       setOperations(data);
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       setError(true);
     }
   };
@@ -57,6 +64,11 @@ function Operations() {
   if (error) {
     return (<Error />);
   }
+
+  if (loading) {
+    return (<Loading />);
+  }
+
   return (
     <div className='mt-5'>
       <Link to='/operations/create'>
