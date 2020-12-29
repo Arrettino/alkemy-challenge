@@ -42,8 +42,8 @@ module.exports = {
   },
   async deleteOperations(id) {
     try {
-      await OperationsModel.destroy({ where: { id } });
-      return ({ message: 'Operation deleted succesfully' });
+      const response = await OperationsModel.destroy({ where: { id } });
+      return ({ message: response });
     } catch (err) {
       return (err);
     }
