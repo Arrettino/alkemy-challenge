@@ -28,7 +28,6 @@ function OperationsCreate() {
   };
 
   const handleData = (operation) => {
-    console.log(operation);
     createOperation(operation);
   };
 
