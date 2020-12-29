@@ -16,18 +16,14 @@ module.exports = {
     return ({ status: 404 });
   },
   async createOperations(concept, amount, date, type) {
-    try {
-      const amountSign = signAmount(amount, type);
-      const totalBalance = await operationsRepo.findTotalBalance(userId);
-      const totalBalanceAmount = totalBalance[0].amount;
-      const newAmount = totalBalanceAmount + amountSign;
-      await operationsRepo.updateTotalBalance(userId, newAmount);
+    const amountSign = signAmount(amount, type);
+    const totalBalance = await operationsRepo.findTotalBalance(userId);
+    const totalBalanceAmount = totalBalance[0].amount;
+    const newAmount = totalBalanceAmount + amountSign;
+    await operationsRepo.updateTotalBalance(userId, newAmount);
 
-      const response = await operationsRepo.createOperations(concept, amount, date, type);
-      return (response);
-    } catch (err) {
-      return (err);
-    }
+    await operationsRepo.createOperations(concept, amount, date, type);
+    return ({ status: 200, message: 'OK' });
   },
   async updateOperations(id, concept, amount, date, type) {
     const operation = await operationsRepo.findOperations(id);

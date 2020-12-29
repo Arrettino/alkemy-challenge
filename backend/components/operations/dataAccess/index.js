@@ -11,14 +11,9 @@ module.exports = {
     return (response);
   },
   async createOperations(concept, amount, date, type) {
-    try {
-      await OperationsModel.create({
-        concept, amount, date, type,
-      });
-      return ({ message: 'Operation created succesfully' });
-    } catch (err) {
-      return (err);
-    }
+    await OperationsModel.create({
+      concept, amount, date, type,
+    });
   },
   async updateOperations(id, concept, amount, date, type) {
     await OperationsModel.update({
