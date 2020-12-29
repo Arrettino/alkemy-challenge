@@ -12,11 +12,15 @@ function Home() {
   const [error, setError] = useState(false);
 
   const findeOperations = async () => {
-    const response = await fetch(`${baseUrl}/operations`);
-    const operations = await response.json();
-    const operationsReverse = operations.reverse();
-    const newOperationsFiltred = operationsReverse.slice(0, 10);
-    setOperationsFiltred(newOperationsFiltred);
+    try {
+      const response = await fetch(`${baseUrl}/operations`);
+      const operations = await response.json();
+      const operationsReverse = operations.reverse();
+      const newOperationsFiltred = operationsReverse.slice(0, 10);
+      setOperationsFiltred(newOperationsFiltred);
+    } catch (err) {
+      setError(true);
+    }
   };
 
   const findTotalBalance = async () => {
