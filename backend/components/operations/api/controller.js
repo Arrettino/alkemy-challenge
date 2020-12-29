@@ -49,9 +49,9 @@ module.exports = {
   async totalBalance(req, res) {
     try {
       const response = await operationsServices.findTotalBalance();
-      res.send(response);
+      res.status(response.status).json(response.json);
     } catch (err) {
-      res.send(err);
+      res.status(500).end();
     }
   },
 };

@@ -59,11 +59,7 @@ module.exports = {
     return ({ status: 400, message: `Not exist operation with id:${id}` });
   },
   async findTotalBalance() {
-    try {
-      const response = await operationsRepo.findTotalBalance(userId);
-      return (response);
-    } catch (err) {
-      return (err);
-    }
+    const response = await operationsRepo.findTotalBalance(userId);
+    return ({ status: 200, json: response });
   },
 };
