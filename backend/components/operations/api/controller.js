@@ -40,9 +40,9 @@ module.exports = {
     try {
       const { id } = req.params;
       const response = await operationsServices.deleteOperations(id);
-      res.send(response);
+      res.status(response.status).send({ message: response.message });
     } catch (err) {
-      res.send(err);
+      res.status(500).end();
     }
   },
 

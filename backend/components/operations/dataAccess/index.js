@@ -11,12 +11,8 @@ module.exports = {
     }
   },
   async findOperations(id) {
-    try {
-      const response = await OperationsModel.findByPk(id);
-      return (response);
-    } catch (err) {
-      return (err);
-    }
+    const response = await OperationsModel.findByPk(id);
+    return (response);
   },
   async createOperations(concept, amount, date, type) {
     try {
@@ -41,20 +37,11 @@ module.exports = {
     }
   },
   async deleteOperations(id) {
-    try {
-      const response = await OperationsModel.destroy({ where: { id } });
-      return ({ message: response });
-    } catch (err) {
-      return (err);
-    }
+    await OperationsModel.destroy({ where: { id } });
   },
   async findTotalBalance(userId) {
-    try {
-      const response = await TotalBalanceModel.findAll({ where: { userId } });
-      return (response);
-    } catch (err) {
-      return (err);
-    }
+    const response = await TotalBalanceModel.findAll({ where: { userId } });
+    return (response);
   },
   async updateTotalBalance(userId, amount) {
     try {

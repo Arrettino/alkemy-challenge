@@ -46,21 +46,17 @@ module.exports = {
     }
   },
   async deleteOperations(id) {
-    try {
-      const operation = await operationsRepo.findOperations(id);
-      if (operation) {
-        const amountSign = signAmount(operation.dataValues.amount, operation.dataValues.type);
-        const totalBalance = await operationsRepo.findTotalBalance(userId);
-        const newAmount = totalBalance - amountSign;
-        await operationsRepo.updateTotalBalance(userId, newAmount);
+    const operation = await operationsRepo.findOperations(id);
+    if (operation) {
+      const amountSign = signAmount(operation.dataValues.amount, operation.dataValues.type);
+      const totalBalance = await operationsRepo.findTotalBalance(1);
+      const newAmount = totalBalance - amountSign;
+      await operationsRepo.updateTotalBalance(userId, newAmount);
 
-        const response = await operationsRepo.deleteOperations(id);
-        return (response);
-      }
-      return ({ message: `Not exist operation with id:${id}` });
-    } catch (err) {
-      return (err);
+      await operationsRepo.deleteOperations(id);
+      return ({ status: 200, message: 'OK' });
     }
+    return ({ status: 400, message: `Not exist operation with id:${id}` });
   },
   async findTotalBalance() {
     try {
