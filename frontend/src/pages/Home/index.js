@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import OperationsList from '../../components/OperationsTable';
+import { baseUrl } from '../../config';
 import './home.css';
 
 function Home() {
-  const [operations] = useState([]);
+  const [operationsFiltred, setOperationsFiltred] = useState([]);
+  const findeOperations = async () => {
+    const response = await fetch(`${baseUrl}/operations`);
+    const operations = await response.json();
+    const operationsReverse = operations.reverse();
+    const newOperationsFiltred = operationsReverse.slice(0, 10);
+    setOperationsFiltred(newOperationsFiltred);
+  };
+  useEffect(() => {
+    findeOperations();
+  }, []);
   return (
     <div className='container mt-5'>
       <div className='row'>
@@ -17,7 +28,7 @@ function Home() {
         </div>
         <div className='col-sm'>
           <h2 className='text-center' style={{ margin: '0px 0px 30px 0px' }}>Ultimas 10 operaciones</h2>
-          <OperationsList operations={operations} />
+          <OperationsList operations={operationsFiltred} />
         </div>
       </div>
     </div>
