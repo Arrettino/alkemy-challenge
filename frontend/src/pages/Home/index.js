@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import OperationsList from '../../components/OperationsTable';
 import { baseUrl } from '../../config';
+import Error from '../../components/Error';
+import Loading from '../../components/Loading';
 import './home.css';
 
 function Home() {
   const [operationsFiltred, setOperationsFiltred] = useState([]);
   const [totalBalance, setTotalBalance] = useState(0);
+  const [loading, setLoadig] = useState(true);
+  const [error] = useState(false);
 
   const findeOperations = async () => {
     const response = await fetch(`${baseUrl}/operations`);
@@ -22,10 +26,20 @@ function Home() {
     setTotalBalance(totalBalanceAmount);
   };
 
-  useEffect(() => {
-    findeOperations();
-    findTotalBalance();
+  useEffect(async () => {
+    await findeOperations();
+    await findTotalBalance();
+    setLoadig(false);
   }, []);
+
+  if (error) {
+    return (<Error />);
+  }
+
+  if (loading) {
+    return (<Loading />);
+  }
+
   return (
     <div className='container mt-5'>
       <div className='row'>
