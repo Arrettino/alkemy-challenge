@@ -9,7 +9,7 @@ function Home() {
   const [operationsFiltred, setOperationsFiltred] = useState([]);
   const [totalBalance, setTotalBalance] = useState(0);
   const [loading, setLoadig] = useState(true);
-  const [error] = useState(false);
+  const [error, setError] = useState(false);
 
   const findeOperations = async () => {
     const response = await fetch(`${baseUrl}/operations`);
@@ -20,10 +20,14 @@ function Home() {
   };
 
   const findTotalBalance = async () => {
-    const response = await fetch(`${baseUrl}/operations/totalbalance`);
-    const data = await response.json();
-    const totalBalanceAmount = data[0].amount;
-    setTotalBalance(totalBalanceAmount);
+    try {
+      const response = await fetch(`${baseUrl}/operations/totalbalance`);
+      const data = await response.json();
+      const totalBalanceAmount = data[0].amount;
+      setTotalBalance(totalBalanceAmount);
+    } catch (err) {
+      setError(true);
+    }
   };
 
   useEffect(async () => {
