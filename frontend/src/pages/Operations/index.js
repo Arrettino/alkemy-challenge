@@ -16,8 +16,10 @@ function Operations() {
   useEffect(() => {
     getOperations();
   }, []);
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete = async (Id) => {
+    fetch(`${baseUrl}/operations/${Id}`, {
+      method: 'DELETE',
+    });
   };
   return (
     <div className='mt-5'>
