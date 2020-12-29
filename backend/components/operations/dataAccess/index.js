@@ -58,7 +58,6 @@ module.exports = {
   },
   async updateTotalBalance(userId, amount) {
     try {
-      console.log(amount);
       const response = await TotalBalanceModel.update(
         { amount, userId },
         { where: { userId } },
