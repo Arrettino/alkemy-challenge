@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { baseUrl } from '../../config';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 import OperationsForm from '../../components/OperationsForm';
 
 function OperationsUpdate() {
   const [operation, setOperation] = useState();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const { id } = useParams();
 
   const findOperation = async () => {
-    const response = await fetch(`${baseUrl}/operations?id=${id}`);
-    const operation = await response.json();
-    setOperation(operation);
-    setLoading(false);
+    try {
+      const response = await fetch(`${baseUrl}/operations?id=${id}`);
+      const operation = await response.json();
+      setOperation(operation);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+    }
   };
 
   useEffect(() => {
@@ -32,9 +40,15 @@ function OperationsUpdate() {
     updateOperation(operation);
   };
 
+  if (error) {
+    return (
+      <Error />
+    );
+  }
+
   if (loading) {
     return (
-      <p>cargando...</p>
+      <Loading />
     );
   }
 
