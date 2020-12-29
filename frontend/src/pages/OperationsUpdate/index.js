@@ -5,10 +5,10 @@ import OperationsForm from '../../components/OperationsForm';
 
 function OperationsUpdate() {
   const [operation, setOperation] = useState({});
-  const { Id } = useParams();
+  const { id } = useParams();
 
   const findOperation = async () => {
-    const response = await fetch(`${baseUrl}/operations/${Id}`);
+    const response = await fetch(`${baseUrl}/operations?id=${id}`);
     const operation = await response.json();
     setOperation(operation);
   };

@@ -12,7 +12,7 @@ function RouterConfig() {
       <Route exact path='/' component={Home} />
       <Route exact path='/operations' component={Operations} />
       <Route exact path='/operations/create' component={OperationsCreate} />
-      <Route exact path='/operations/update/:Id' component={OperationsUpdate} />
+      <Route exact path='/operations/update/:id' component={OperationsUpdate} />
       <Route component={NotFound} />
     </Switch>
   );
