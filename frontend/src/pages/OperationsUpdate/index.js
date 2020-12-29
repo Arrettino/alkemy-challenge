@@ -3,20 +3,27 @@ import { useParams } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
+import NotFound from '../NotFound';
 import OperationsForm from '../../components/OperationsForm';
 
 function OperationsUpdate() {
   const [operation, setOperation] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const { id } = useParams();
 
   const findOperation = async () => {
     try {
       const response = await fetch(`${baseUrl}/operations?id=${id}`);
-      const operation = await response.json();
-      setOperation(operation);
-      setLoading(false);
+      if (response.status === 200) {
+        const operation = await response.json();
+        setOperation(operation);
+        setLoading(false);
+      } else {
+        setNotFound(true);
+        setLoading(false);
+      }
     } catch (err) {
       setLoading(false);
       setError(true);
@@ -43,6 +50,12 @@ function OperationsUpdate() {
   if (error) {
     return (
       <Error />
+    );
+  }
+
+  if (notFound) {
+    return (
+      <NotFound />
     );
   }
 
