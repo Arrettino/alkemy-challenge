@@ -5,6 +5,8 @@ import './home.css';
 
 function Home() {
   const [operationsFiltred, setOperationsFiltred] = useState([]);
+  const [totalBalance, setTotalBalance] = useState(0);
+
   const findeOperations = async () => {
     const response = await fetch(`${baseUrl}/operations`);
     const operations = await response.json();
@@ -12,8 +14,17 @@ function Home() {
     const newOperationsFiltred = operationsReverse.slice(0, 10);
     setOperationsFiltred(newOperationsFiltred);
   };
+
+  const findTotalBalance = async () => {
+    const response = await fetch(`${baseUrl}/operations/totalbalance`);
+    const data = await response.json();
+    const totalBalanceAmount = data[0].amount;
+    setTotalBalance(totalBalanceAmount);
+  };
+
   useEffect(() => {
     findeOperations();
+    findTotalBalance();
   }, []);
   return (
     <div className='container mt-5'>
@@ -22,7 +33,10 @@ function Home() {
           <div className='card text-white bg-success text-center shadow'>
             <div className='card-body'>
               <h2>Balance Total</h2>
-              <h3>$5000</h3>
+              <h3>
+                $
+                {totalBalance}
+              </h3>
             </div>
           </div>
         </div>
