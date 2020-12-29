@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=backend:server NODE_ENV=production node ./bin/www",
-    "start:dev": "nodemon -L --config nodemon.json ./bin/www "
+    "start:dev": "nodemon -L --config nodemon.json ./bin/www ",
+    "init:database": "node ./db/initDatabase"
   },
   "dependencies": {
     "config": "^3.3.3",
