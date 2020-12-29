@@ -11,9 +11,13 @@ function Operations() {
   const [error, setError] = useState(false);
 
   const getOperations = async () => {
-    const response = await fetch(`${baseUrl}/operations`);
-    const data = await response.json();
-    setOperations(data);
+    try {
+      const response = await fetch(`${baseUrl}/operations`);
+      const data = await response.json();
+      setOperations(data);
+    } catch (err) {
+      setError(true);
+    }
   };
 
   useEffect(() => {
