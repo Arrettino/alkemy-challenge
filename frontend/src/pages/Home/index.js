@@ -11,7 +11,7 @@ function Home() {
   const [loading, setLoadig] = useState(true);
   const [error, setError] = useState(false);
 
-  const findeOperations = async () => {
+  const getOperations = async () => {
     try {
       const response = await fetch(`${baseUrl}/operations`);
       const operations = await response.json();
@@ -35,7 +35,7 @@ function Home() {
   };
 
   useEffect(async () => {
-    await findeOperations();
+    await getOperations();
     await findTotalBalance();
     setLoadig(false);
   }, []);
