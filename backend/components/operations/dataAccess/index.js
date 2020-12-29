@@ -50,7 +50,7 @@ module.exports = {
   },
   async findTotalBalance(userId) {
     try {
-      const response = await TotalBalanceModel.find({ where: { userId } });
+      const response = await TotalBalanceModel.findAll({ where: { userId } });
       return (response);
     } catch (err) {
       return (err);
