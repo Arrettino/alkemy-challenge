@@ -4,13 +4,15 @@ import { baseUrl } from '../../config';
 import OperationsForm from '../../components/OperationsForm';
 
 function OperationsUpdate() {
-  const [operation, setOperation] = useState({});
+  const [operation, setOperation] = useState();
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
   const findOperation = async () => {
     const response = await fetch(`${baseUrl}/operations?id=${id}`);
     const operation = await response.json();
     setOperation(operation);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -29,6 +31,13 @@ function OperationsUpdate() {
   const handleData = (operation) => {
     updateOperation(operation);
   };
+
+  if (loading) {
+    return (
+      <p>cargando...</p>
+    );
+  }
+
   return (
     <>
       <div className='w-50  mt-5 mx-auto'>
