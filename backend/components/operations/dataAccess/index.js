@@ -1,4 +1,5 @@
 const OperationsModel = require('./OperationsModel');
+const TotalBalanceModel = require('./TotalBalanceModel');
 
 module.exports = {
   async findAllOperations() {
@@ -43,6 +44,33 @@ module.exports = {
     try {
       await OperationsModel.destroy({ where: { id } });
       return ({ message: 'Operation deleted succesfully' });
+    } catch (err) {
+      return (err);
+    }
+  },
+  async findTotalBalance(userId) {
+    try {
+      const response = await TotalBalanceModel.find({ where: { userId } });
+      return (response);
+    } catch (err) {
+      return (err);
+    }
+  },
+  async updateTotalBalance(userId, amount) {
+    try {
+      const response = await TotalBalanceModel.update(
+        { amount, userId },
+        { where: { userId } },
+      );
+      return (response);
+    } catch (err) {
+      return (err);
+    }
+  },
+  async createTotalBalance(userId) {
+    try {
+      const response = await TotalBalanceModel.create({ amount: 0, userId });
+      return (response);
     } catch (err) {
       return (err);
     }
