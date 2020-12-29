@@ -18,6 +18,7 @@ module.exports = {
       const totalBalance = await operationsRepo.findTotalBalance(userId);
       const newAmount = totalBalance[0].amount + amountSign;
       await operationsRepo.updateTotalBalance(userId, newAmount);
+
       const response = await operationsRepo.createOperations(concept, amount, date, type);
       return (response);
     } catch (err) {
@@ -26,6 +27,14 @@ module.exports = {
   },
   async updateOperations(id, concept, amount, date, type) {
     try {
+      const operation = await operationsRepo.findOperations(id);
+      let amountSign = signAmount(operation.dataValues.amount, operation.dataValues.type);
+      const totalBalance = await operationsRepo.findTotalBalance(userId);
+      let newAmount = totalBalance[0].amount - amountSign;
+      amountSign = signAmount(amount, type);
+      newAmount = amountSign + newAmount;
+      await operationsRepo.updateTotalBalance(userId, newAmount);
+
       const response = await operationsRepo.updateOperations(id, concept, amount, date, type);
       return (response);
     } catch (err) {
@@ -34,6 +43,12 @@ module.exports = {
   },
   async deleteOperations(id) {
     try {
+      const operation = await operationsRepo.findOperations(id);
+      const amountSign = signAmount(operation.dataValues.amount, operation.dataValues.type);
+      const totalBalance = await operationsRepo.findTotalBalance(userId);
+      const newAmount = totalBalance - amountSign;
+      await operationsRepo.updateTotalBalance(userId, newAmount);
+
       const response = await operationsRepo.deleteOperations(id);
       return (response);
     } catch (err) {
