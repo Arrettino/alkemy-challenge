@@ -3,7 +3,8 @@ const operationsServices = require('../services');
 module.exports = {
   async findAllOperations(req, res) {
     try {
-      const response = await operationsServices.findAllOperations();
+      const { id } = req.query;
+      const response = await operationsServices.findAllOperations(id);
       res.send(response);
     } catch (err) {
       res.send(err);

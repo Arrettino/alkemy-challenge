@@ -8,7 +8,7 @@ const schemas = {
     type: Joi.string().min(1).max(20).required(),
   }),
   operationsId: Joi.object().keys({
-    id: Joi.number().integer().required(),
+    id: Joi.number().integer(),
   }),
 };
 

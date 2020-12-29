@@ -5,7 +5,9 @@ const validationSchema = require('./validationSchemas');
 
 const router = express.Router();
 
-router.get('/', operationsController.findAllOperations);
+router.get('/',
+  validationMiddleware(validationSchema.operationsId, 'query'),
+  operationsController.findAllOperations);
 
 router.get('/totalbalance', operationsController.totalBalance);
 
