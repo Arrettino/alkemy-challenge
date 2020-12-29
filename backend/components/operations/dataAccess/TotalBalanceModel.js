@@ -12,7 +12,7 @@ module.exports = sequelize.define('totalBalanceOperations', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  user_id: {
+  userId: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
