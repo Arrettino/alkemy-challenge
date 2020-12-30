@@ -8,7 +8,7 @@ import { baseUrl } from '../../config';
 
 function Home() {
   const [operationsFiltred, setOperationsFiltred] = useState([]);
-  const [totalBalance, setTotalBalance] = useState(0);
+  const [totalBalanceAmount, setTotalBalanceAmount] = useState(0);
   const [loading, setLoadig] = useState(true);
   const [error, setError] = useState(false);
 
@@ -29,7 +29,7 @@ function Home() {
       const response = await fetch(`${baseUrl}/operations/totalbalance`);
       const data = await response.json();
       const totalBalanceAmount = data[0].amount;
-      setTotalBalance(totalBalanceAmount);
+      setTotalBalanceAmount(totalBalanceAmount);
     } catch (err) {
       setError(true);
     }
@@ -58,7 +58,7 @@ function Home() {
               <h2>Balance Total</h2>
               <h3>
                 $
-                {totalBalance}
+                {totalBalanceAmount}
               </h3>
             </div>
           </div>
