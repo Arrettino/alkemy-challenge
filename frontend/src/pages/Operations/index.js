@@ -13,7 +13,7 @@ import './operations.css';
 function Operations() {
   const [operations, setOperations] = useState([]);
   const [operationsFiltred, setOperationsFiltred] = useState([]);
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
