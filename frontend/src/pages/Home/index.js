@@ -28,8 +28,8 @@ function Home() {
     try {
       const response = await fetch(`${baseUrl}/operations/totalbalance`);
       const data = await response.json();
-      const totalBalanceAmount = data[0].amount;
-      setTotalBalanceAmount(totalBalanceAmount);
+      const newTotalBalanceAmount = data[0].amount;
+      setTotalBalanceAmount(newTotalBalanceAmount);
     } catch (err) {
       setError(true);
     }
