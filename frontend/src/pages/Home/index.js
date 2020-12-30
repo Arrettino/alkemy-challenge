@@ -17,8 +17,8 @@ function Home() {
       const response = await fetch(`${baseUrl}/operations`);
       const operations = await response.json();
       const operationsReverse = operations.reverse();
-      const newOperationsFiltred = operationsReverse.slice(0, 10);
-      setOperationsFiltred(newOperationsFiltred);
+      const OperationsReverseFiltred = operationsReverse.slice(0, 10);
+      setOperationsFiltred(OperationsReverseFiltred);
     } catch (err) {
       setError(true);
     }
