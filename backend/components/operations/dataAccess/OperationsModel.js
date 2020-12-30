@@ -16,6 +16,10 @@ module.exports = sequelize.define('operations', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  categories_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
   date: {
     type: Sequelize.DATEONLY,
     allowNull: false,
