@@ -27,8 +27,8 @@ function Home() {
   const findTotalBalance = async () => {
     try {
       const response = await fetch(`${baseUrl}/operations/totalbalance`);
-      const data = await response.json();
-      const newTotalBalanceAmount = data[0].amount;
+      const totalBalance = await response.json();
+      const newTotalBalanceAmount = totalBalance[0].amount;
       setTotalBalanceAmount(newTotalBalanceAmount);
     } catch (err) {
       setError(true);
