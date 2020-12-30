@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+//components
 import OperationsForm from '../../components/OperationsForm';
-import { baseUrl } from '../../config';
 import Error from '../../components/Error';
+//config
+import { baseUrl } from '../../config';
 
 function OperationsCreate() {
   const history = useHistory();

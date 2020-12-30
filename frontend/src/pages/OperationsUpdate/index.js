@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { baseUrl } from '../../config';
+//components
+import OperationsForm from '../../components/OperationsForm';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 import NotFound from '../NotFound';
-import OperationsForm from '../../components/OperationsForm';
+//config
+import { baseUrl } from '../../config';
 
 function OperationsUpdate() {
   const [operation, setOperation] = useState();

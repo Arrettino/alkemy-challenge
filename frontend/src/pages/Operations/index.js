@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 //components
-import Loading from '../../components/Loading';
 import OperationTable from '../../components/OperationsTable';
+import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 //config
 import { baseUrl } from '../../config';

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+//components
 import Loading from '../Loading';
 import Error from '../Error';
+//config
 import { baseUrl } from '../../config';
 
 const OperationSchema = yup.object().shape({

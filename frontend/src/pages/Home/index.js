@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+//components
 import OperationsList from '../../components/OperationsTable';
-import { baseUrl } from '../../config';
 import Error from '../../components/Error';
 import Loading from '../../components/Loading';
+//config
+import { baseUrl } from '../../config';
 
 function Home() {
   const [operationsFiltred, setOperationsFiltred] = useState([]);
