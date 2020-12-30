@@ -54,4 +54,12 @@ module.exports = {
       res.status(500).end();
     }
   },
+  async findAllCategories(req, res) {
+    try {
+      const response = await operationsServices.findAllCategories();
+      res.status(response.status).json(response.json);
+    } catch (err) {
+      res.status(500).end();
+    }
+  },
 };

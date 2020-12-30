@@ -11,6 +11,8 @@ router.get('/',
 
 router.get('/totalbalance', operationsController.totalBalance);
 
+router.get('/categories', operationsController.findAllCategories);
+
 router.post('/',
   validationMiddleware(validationSchema.operations, 'body'),
   operationsController.createOperations);

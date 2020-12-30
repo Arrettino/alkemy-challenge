@@ -1,3 +1,4 @@
+const { findAllCategories } = require('../dataAccess');
 const operationsRepo = require('../dataAccess');
 const signAmount = require('../utils/signAmount');
 
@@ -60,6 +61,10 @@ module.exports = {
   },
   async findTotalBalance() {
     const response = await operationsRepo.findTotalBalance(userId);
+    return ({ status: 200, json: response });
+  },
+  async findAllCategories() {
+    const response = await operationsRepo.findAllCategories();
     return ({ status: 200, json: response });
   },
 };
