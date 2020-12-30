@@ -3,10 +3,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const config = require('config');
 const cors = require('cors');
+const initDatabase = require('./db/initDatabase');
 
 const router = require('./routes');
 
 const app = express();
+
+initDatabase();
 
 if (config.get('server.nodeEnv') === 'development') {
   app.use(cors());

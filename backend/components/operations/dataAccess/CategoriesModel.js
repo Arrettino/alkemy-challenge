@@ -9,7 +9,7 @@ module.exports = sequelize.define('categories', {
     allowNull: false,
   },
   name: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.TEXT,
     allowNull: false,
   },
 });

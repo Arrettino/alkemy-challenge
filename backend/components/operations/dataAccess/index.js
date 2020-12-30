@@ -4,21 +4,35 @@ const CategoriesModel = require('./CategoriesModel');
 
 module.exports = {
   async findAllOperations() {
-    const response = await OperationsModel.findAll({});
+    const response = await OperationsModel.findAll({
+      include: [
+        {
+          model: CategoriesModel,
+          as: 'categories',
+        },
+      ],
+    });
     return (response);
   },
   async findOperations(id) {
-    const response = await OperationsModel.findByPk(id);
+    const response = await OperationsModel.findByPk(id, {
+      include: [
+        {
+          model: CategoriesModel,
+          as: 'categories',
+        },
+      ],
+    });
     return (response);
   },
-  async createOperations(concept, amount, date, type) {
+  async createOperations(concept, amount, date, type, categoriesId) {
     await OperationsModel.create({
-      concept, amount, date, type,
+      concept, amount, date, type, categoriesId,
     });
   },
-  async updateOperations(id, concept, amount, date, type) {
+  async updateOperations(id, concept, amount, date, type, categoriesId) {
     await OperationsModel.update({
-      concept, amount, date, type,
+      concept, amount, date, type, categoriesId,
     }, {
       where: { id },
     });

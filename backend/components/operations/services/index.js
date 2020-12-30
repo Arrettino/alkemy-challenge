@@ -1,4 +1,3 @@
-const { findAllCategories } = require('../dataAccess');
 const operationsRepo = require('../dataAccess');
 const signAmount = require('../utils/signAmount');
 
@@ -16,17 +15,17 @@ module.exports = {
     }
     return ({ status: 404 });
   },
-  async createOperations(concept, amount, date, type) {
+  async createOperations(concept, amount, date, type, categoriesId) {
     const amountSign = signAmount(amount, type);
     const totalBalance = await operationsRepo.findTotalBalance(userId);
     const totalBalanceAmount = totalBalance[0].amount;
     const newAmount = totalBalanceAmount + amountSign;
     await operationsRepo.updateTotalBalance(userId, newAmount);
 
-    await operationsRepo.createOperations(concept, amount, date, type);
+    await operationsRepo.createOperations(concept, amount, date, type, categoriesId);
     return ({ status: 200, message: 'OK' });
   },
-  async updateOperations(id, concept, amount, date, type) {
+  async updateOperations(id, concept, amount, date, type, categoriesId) {
     const operation = await operationsRepo.findOperations(id);
     if (operation) {
       const totalBalance = await operationsRepo.findTotalBalance(userId);
@@ -40,7 +39,7 @@ module.exports = {
       );
       await operationsRepo.updateTotalBalance(userId, newTotalBalanceAmount);
 
-      await operationsRepo.updateOperations(id, concept, amount, date, type);
+      await operationsRepo.updateOperations(id, concept, amount, date, type, categoriesId);
       return ({ status: 200, message: 'OK' });
     }
     return ({ status: 400, message: `Not exist operation with id:${id}` });

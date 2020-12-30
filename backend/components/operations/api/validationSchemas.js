@@ -4,6 +4,7 @@ const schemas = {
   operations: Joi.object().keys({
     concept: Joi.string().min(3).max(30).required(),
     amount: Joi.number().integer().positive().required(),
+    categoriesId: Joi.number().integer().positive().required(),
     date: Joi.string().length(10).required(),
     type: Joi.string().min(1).max(20).required(),
   }),

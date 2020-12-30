@@ -7,6 +7,7 @@ module.exports = {
       const response = await operationsServices.findOperations(id);
       res.status(response.status).json(response.json);
     } catch (err) {
+      console.log(err);
       res.status(500).end();
     }
   },
@@ -14,9 +15,11 @@ module.exports = {
   async createOperations(req, res) {
     try {
       const {
-        concept, amount, date, type,
+        concept, amount, date, type, categoriesId,
       } = req.body;
-      const response = await operationsServices.createOperations(concept, amount, date, type);
+      const response = await operationsServices.createOperations(
+        concept, amount, date, type, categoriesId,
+      );
       res.status(response.status).send({ message: response.message });
     } catch (err) {
       res.status(500).end();
@@ -27,9 +30,11 @@ module.exports = {
     try {
       const { id } = req.params;
       const {
-        concept, amount, date, type,
+        concept, amount, date, type, categoriesId,
       } = req.body;
-      const response = await operationsServices.updateOperations(id, concept, amount, date, type);
+      const response = await operationsServices.updateOperations(
+        id, concept, amount, date, type, categoriesId,
+      );
       res.status(response.status).send({ message: response.message });
     } catch (err) {
       res.status(500).end();
