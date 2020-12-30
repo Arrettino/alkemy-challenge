@@ -21,8 +21,8 @@ function OperationsUpdate() {
     try {
       const response = await fetch(`${baseUrl}/operations?id=${id}`);
       if (response.status === 200) {
-        const operation = await response.json();
-        setOperation(operation);
+        const newOperation = await response.json();
+        setOperation(newOperation);
         setLoading(false);
       } else {
         setNotFound(true);
