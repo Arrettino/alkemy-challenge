@@ -7,8 +7,6 @@ import OperationTable from '../../components/OperationsTable';
 import Error from '../../components/Error';
 //config
 import { baseUrl } from '../../config';
-//assets
-import './operations.css';
 
 function Operations() {
   const [operations, setOperations] = useState([]);
