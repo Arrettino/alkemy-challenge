@@ -13,14 +13,14 @@ async function initDatabase() {
     }
     response = await operationsDataAccess.findAllCategories();
     if (!response[0]) {
-      await operationsDataAccess.createCategories('salario');
-      await operationsDataAccess.createCategories('comida');
-      await operationsDataAccess.createCategories('impuestos');
+      await operationsDataAccess.createCategories('Salario');
+      await operationsDataAccess.createCategories('Comida');
+      await operationsDataAccess.createCategories('Impuestos');
       await operationsDataAccess.createCategories('Intereses de cuentas bancarias');
-      await operationsDataAccess.createCategories('transporte');
-      await operationsDataAccess.createCategories('entretenimiento');
-      await operationsDataAccess.createCategories('inversiones');
-      await operationsDataAccess.createCategories('otros');
+      await operationsDataAccess.createCategories('Transporte');
+      await operationsDataAccess.createCategories('Entretenimiento');
+      await operationsDataAccess.createCategories('Inversiones');
+      await operationsDataAccess.createCategories('Otros');
     }
   } catch (err) {
     console.log(err);
