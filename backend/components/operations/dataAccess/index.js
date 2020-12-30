@@ -1,5 +1,6 @@
 const OperationsModel = require('./OperationsModel');
 const TotalBalanceModel = require('./TotalBalanceModel');
+const CategoriesModel = require('./CategoriesModel');
 
 module.exports = {
   async findAllOperations() {
@@ -43,5 +44,12 @@ module.exports = {
     } catch (err) {
       return (err);
     }
+  },
+  async createCategories(name) {
+    await CategoriesModel.create({ name });
+  },
+  async findAllCategories() {
+    const response = await CategoriesModel.findAll();
+    return response;
   },
 };
