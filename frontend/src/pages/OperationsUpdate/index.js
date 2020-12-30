@@ -38,7 +38,7 @@ function OperationsUpdate() {
     findOperation();
   }, []);
 
-  const updateOperation = async (operation) => {
+  const updateOperation = async (newOperation) => {
     try {
       const result = await Swal.fire({
         title: '¿Guardar cambios?',
@@ -51,7 +51,7 @@ function OperationsUpdate() {
       if (result.isConfirmed) {
         const response = await fetch(`${baseUrl}/operations/${id}`, {
           method: 'PUT',
-          body: JSON.stringify(operation),
+          body: JSON.stringify(newOperation),
           headers: {
             'Content-type': 'application/json',
           },
@@ -67,8 +67,8 @@ function OperationsUpdate() {
     }
   };
 
-  const handleData = (operation) => {
-    updateOperation(operation);
+  const handleData = (newOperation) => {
+    updateOperation(newOperation);
   };
 
   if (error) {
