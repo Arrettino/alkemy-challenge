@@ -3,7 +3,6 @@ import OperationsList from '../../components/OperationsTable';
 import { baseUrl } from '../../config';
 import Error from '../../components/Error';
 import Loading from '../../components/Loading';
-import './home.css';
 
 function Home() {
   const [operationsFiltred, setOperationsFiltred] = useState([]);
