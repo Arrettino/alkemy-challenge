@@ -12,6 +12,9 @@ const app = express();
 
 initDatabase();
 
+if (config.get('server.nodeEnv') === 'development') {
+  app.use(cors());
+}
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,9 +22,7 @@ app.use(cookieParser());
 
 app.use('/server', router);
 
-if (config.get('server.nodeEnv') === 'development') {
-  app.use(cors());
-} else {
+if (config.get('server.nodeEnv') === 'production') {
   app.use(express.static(path.join(__dirname, './../frontend/build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
