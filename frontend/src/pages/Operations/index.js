@@ -18,10 +18,10 @@ function Operations() {
   const getOperations = async () => {
     try {
       const response = await fetch(`${baseUrl}/operations`);
-      const data = await response.json();
-      const dataReverse = await data.reverse();
-      setOperations(dataReverse);
-      setOperationsFiltred(dataReverse);
+      const newOperations = await response.json();
+      const newOperationsReverse = await newOperations.reverse();
+      setOperations(newOperationsReverse);
+      setOperationsFiltred(newOperationsReverse);
     } catch (err) {
       setLoading(false);
       setError(true);
