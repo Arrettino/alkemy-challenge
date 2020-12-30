@@ -97,6 +97,7 @@ function OperationsUpdate() {
           type={operation.type}
           handleData={handleData}
           update
+          categoryId={operation.categories.id}
         />
       </div>
     </>

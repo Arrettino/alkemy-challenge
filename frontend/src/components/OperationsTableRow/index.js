@@ -4,12 +4,13 @@ import edit from '../../assets/pics/edit.svg';
 import remove from '../../assets/pics/delete.svg';
 import './operationsTableRow.css';
 
-function OperationsTableRow({ id, concept, amount, date, type, actions, handleDelete }) {
+function OperationsTableRow({ id, concept, amount, categories, date, type, actions, handleDelete }) {
   return (
     <tr>
       <th scope='row'>{id}</th>
       <td>{concept}</td>
       <td>{amount}</td>
+      <td>{categories.name}</td>
       <td>{date}</td>
       <td>{type}</td>
       {actions ?

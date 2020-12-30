@@ -12,6 +12,8 @@ import './operations.css';
 
 function Operations() {
   const [operations, setOperations] = useState([]);
+  const [operationsFiltred, setOperationsFiltred] = useState([]);
+  const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -19,16 +21,31 @@ function Operations() {
     try {
       const response = await fetch(`${baseUrl}/operations`);
       const data = await response.json();
-      setOperations(data);
-      setLoading(false);
+      const dataReverse = await data.reverse();
+      setOperations(dataReverse);
+      setOperationsFiltred(dataReverse);
     } catch (err) {
       setLoading(false);
       setError(true);
     }
   };
 
-  useEffect(() => {
-    getOperations();
+  const getCategories = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/operations/categories`);
+      const data = await response.json();
+      setCategories(data);
+    } catch (err) {
+
+      setError(true);
+      setLoading(false);
+    }
+  };
+
+  useEffect(async () => {
+    await getOperations();
+    await getCategories();
+    setLoading(false);
   }, []);
 
   const handleDelete = async (Id) => {
@@ -61,6 +78,16 @@ function Operations() {
     }
   };
 
+  const handleChange = (e) => {
+    if (e.target.value === '0') {
+      setOperationsFiltred(operations);
+    } else {
+      const categoriesIdNumber = parseInt(e.target.value, 10);
+      const filtedOperations = operations.filter((operation) => operation.categoriesId === categoriesIdNumber);
+      setOperationsFiltred(filtedOperations);
+    }
+  };
+
   if (error) {
     return (<Error />);
   }
@@ -71,12 +98,25 @@ function Operations() {
 
   return (
     <div className='mt-5'>
-      <Link to='/operations/create'>
-        <button type='button' className='btn btn-success float-right mb-3 mr-3'>
-          Crear
-        </button>
-      </Link>
-      <OperationTable operations={operations} actions handleDelete={handleDelete} />
+      <div className='mb-3 row'>
+        <div className='col-md-6'>
+          <label htmlFor='categories' className='ml-3'>Filtrar por categoria</label>
+          <select className='form-control w-50 ml-3' id='categories' name='categoriesId' onChange={handleChange} searchable='Search here..'>
+            <option value='0'>Sin filtro</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>{category.name}</option>
+            ))}
+          </select>
+        </div>
+        <div className='col-md-6'>
+          <Link to='/operations/create'>
+            <button type='button' className='btn btn-success float-right mt-4 mr-3'>
+              Crear
+            </button>
+          </Link>
+        </div>
+      </div>
+      <OperationTable operations={operationsFiltred} actions handleDelete={handleDelete} />
     </div>
   );
 }

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Loading from '../Loading';
+import Error from '../Error';
+import { baseUrl } from '../../config';
 
 const OperationSchema = yup.object().shape({
   concept: yup.string()
@@ -17,14 +20,43 @@ const OperationSchema = yup.object().shape({
   date: yup.string().required('Fecha es requerida'),
 });
 
-function OperationsForm({ concept, amount, date, type, handleData, update }) {
+function OperationsForm({ concept, amount, date, type, handleData, update, categoryId }) {
+  const [categories, setCategories] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(OperationSchema),
   });
+
+  const getCategories = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/operations/categories`);
+      const data = await response.json();
+      setCategories(data);
+      setLoading(false);
+    } catch (err) {
+
+      setError(true);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   const onSubmit = (data) => {
-    const operation = { ...data, amount: parseInt(data.amount, 10) };
+    const operation = { ...data, amount: parseInt(data.amount, 10), categoriesId: parseInt(data.categoriesId, 10) };
     handleData(operation);
   };
+
+  if (error) {
+    return (<Error />);
+  }
+  if (loading) {
+    return (<Loading />);
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -51,6 +83,18 @@ function OperationsForm({ concept, amount, date, type, handleData, update }) {
               <option value='Egreso'>Egreso</option>
             </select>
           </div>
+        </div>
+        <div className='form-row'>
+          <div className='form-group col-md-6'>
+            <label htmlFor='categories'>Categoria</label>
+            <select className='form-control' id='categories' defaultValue={categoryId} name='categoriesId' searchable='Search here..' ref={register}>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>{category.name}</option>
+              ))}
+            </select>
+            {errors.date && <p className='alert alert-danger mt-3'>{errors.date.message}</p>}
+          </div>
+          <div className='form-group col-md-6' />
         </div>
         {update ?
           <button type='submit' className='btn btn-success float-right'>Guardar</button> :

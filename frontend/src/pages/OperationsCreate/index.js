@@ -19,9 +19,8 @@ function OperationsCreate() {
       });
       if (response.status === 200) {
         return (history.push('/operations'));
-      }(
-        setError(true)
-      );
+      }
+      setError(true);
     } catch (err) {
       setError(true);
     }

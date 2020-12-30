@@ -10,6 +10,7 @@ function OperationTable({ operations, actions, handleDelete }) {
             <th scope='col'>ID</th>
             <th scope='col'>Concepto</th>
             <th scope='col'>Monto</th>
+            <th scope='col'>Categoria</th>
             <th scope='col'>Fecha</th>
             <th scope='col'>Tipo</th>
             {actions ?
@@ -23,11 +24,12 @@ function OperationTable({ operations, actions, handleDelete }) {
           </tr>
         </thead>
         <tbody>
-          {operations.map(({ id, concept, amount, date, type }) => (
+          {operations.map(({ id, concept, amount, categories, date, type }) => (
             <TableRow
               id={id}
               concept={concept}
               amount={amount}
+              categories={categories}
               date={date}
               type={type}
               key={id}
