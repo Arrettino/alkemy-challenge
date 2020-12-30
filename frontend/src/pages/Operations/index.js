@@ -31,10 +31,9 @@ function Operations() {
   const getCategories = async () => {
     try {
       const response = await fetch(`${baseUrl}/operations/categories`);
-      const data = await response.json();
-      setCategories(data);
+      const newCategories = await response.json();
+      setCategories(newCategories);
     } catch (err) {
-
       setError(true);
       setLoading(false);
     }
