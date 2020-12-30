@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run strat:frontend && npm run start:backend",
+    "start:backend": "cd backend && npm run start",
+    "strat:frontend": "cd frontend && npm run build",
+    "install": "npm run install:backend && npm run install:frontend",
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install"
+  }
+}
